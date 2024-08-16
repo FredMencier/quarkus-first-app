@@ -20,3 +20,6 @@
 - Execution de l'app
   - jvm : docker run -i --rm -p 8080:8080 first-app-jvm:first-app-1.0.0-SNAPSHOT
   - native : docker run -i --rm -p 8080:8080 first-app-native:first-app-1.0.0-SNAPSHOT
+
+-Test de l'app :
+  - curl http://localhost:8080/hello
