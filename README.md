@@ -1,5 +1,6 @@
 # quarkus-first-app
 ## First Application Quarkus
+### hello endpoint rest, Compilation + packaging + run : jvm et native
 
 - Démarrage de l'app en mode dev
   - mvn clean compile quarkus:dev
