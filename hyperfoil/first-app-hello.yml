@@ -1,0 +1,10 @@
+name: hello-benchmark
+http:
+  host: http://host.docker.internal:8080
+  sharedConnections: 10
+duration: 10s
+usersPerSec: 10
+scenario:
+  - hello-endpoint:
+      - httpRequest:
+          GET: /hello
