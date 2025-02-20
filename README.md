@@ -2,7 +2,15 @@
 ## First Application Quarkus
 ### hello endpoint rest, Compilation + packaging + run : jvm et native
 
-Prérequis : java 17 minimum et docker desktop
+Cette démo comporte 2 branches Git :
+- **main** :
+  - contient le code source de l'application et permet simplement de démarrer et tester l'application
+- **performance_testing** :
+  - contient en plus les fichiers docker permettant de builder l'application dans le différentes configurations de tests
+  - contient également les fichiers hyperfoil permettant de lancer les tests de performances
+
+
+Prérequis : java 17 minimum et docker desktop version 20 minimum
 
 - Démarrage de l'app en mode dev
 ```shell
@@ -66,6 +74,8 @@ siege -t10S -c100 http://localhost:8080/hello
 
 ## Performance testing avec hyperfoil
 - https://hyperfoil.io
+
+Utilisation en mode cli :
 ```shell
 docker run -it --rm -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil:/benchmarks:Z -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil/reports:/tmp/reports:Z quay.io/hyperfoil/hyperfoil cli
 start-local
@@ -74,3 +84,5 @@ run hello-benchmark
 stats
 report --destination=/tmp/reports
 ```
+
+Utilisation avec un script complet :
