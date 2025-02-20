@@ -52,7 +52,7 @@ docker build -f src/main/docker/Dockerfile.jvm -t first-app-jvm:first-app-1.0.0-
 ```shell
 docker run -i --rm -p 8080:8080 first-app-jvm:first-app-1.0.0-SNAPSHOT
 ```
-  - native :
+- native :
 ```shell
 docker run -i --rm -p 8080:8080 first-app-native:first-app-1.0.0-SNAPSHOT
 ```
@@ -79,10 +79,13 @@ Utilisation en mode cli :
 ```shell
 docker run -it --rm -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil:/benchmarks:Z -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil/reports:/tmp/reports:Z quay.io/hyperfoil/hyperfoil cli
 start-local
-upload /benchmarks/first-app-hello.yml
+upload /benchmarks/helloBenchmark.yml
 run hello-benchmark
 stats
 report --destination=/tmp/reports
 ```
 
 Utilisation avec un script complet :
+```shell
+./hyperfoil/startHyperfoil.sh
+```
