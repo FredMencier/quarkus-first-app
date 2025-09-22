@@ -1,4 +1,4 @@
-# quarkus-first-app
+# quarkus-person
 ## First Application Quarkus
 ### Application Quarkus REST + DB (MySQL) + Properties + Timer
 
