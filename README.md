@@ -1,6 +1,6 @@
 # quarkus-first-app
 ## First Application Quarkus
-### - Application Quarkus REST + DB (MySQL) + Properties + Timer
+### Application Quarkus REST + DB (MySQL) + Properties + Timer
 
 Cette démo comporte 2 branches Git :
 - **main** :
