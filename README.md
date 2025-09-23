@@ -39,27 +39,27 @@ mvn clean package -Dnative -Dquarkus.native.container-build=true
 
 - Packaging de l'app native dans une image docker
 ```shell
-docker build -f src/main/docker/Dockerfile.native -t first-app-native:first-app-1.0.0-SNAPSHOT .
+docker build -f src/main/docker/Dockerfile.native -t person-app-native:quarkus-person-app-1.0.0-SNAPSHOT .
 ```
 
 - Packaging de l'app jvm dans une image docker
 ```shell
-docker build -f src/main/docker/Dockerfile.jvm -t first-app-jvm:first-app-1.0.0-SNAPSHOT .
+docker build -f src/main/docker/Dockerfile.jvm -t person-app-jvm:quarkus-person-app-1.0.0-SNAPSHOT .
 ```
 
 - Execution de l'app
   - jvm :
 ```shell
-docker run -i --rm -p 8080:8080 first-app-jvm:first-app-1.0.0-SNAPSHOT
+docker run -i --rm -p 8080:8080 person-app-jvm:quarkus-person-app-1.0.0-SNAPSHOT
 ```
 - native :
 ```shell
-docker run -i --rm -p 8080:8080 first-app-native:first-app-1.0.0-SNAPSHOT
+docker run -i --rm -p 8080:8080 person-app-native:quarkus-person-app-1.0.0-SNAPSHOT
 ```
 
 - Test de l'app :
 ```shell
-curl http://localhost:8080/hello
+curl http://localhost:8080/persons
 ```
 
 ## Perfomance testing avec Siege
@@ -69,7 +69,7 @@ Installation de siege :
 - https://hub.docker.com/r/yokogawa/siege
 
 ```shell
-siege -t10S -c100 http://localhost:8080/hello
+siege -t10S -c100 http://localhost:8080/persons
 ```
 
 ## Performance testing avec hyperfoil
@@ -79,8 +79,8 @@ Utilisation en mode cli :
 ```shell
 docker run -it --rm -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil:/benchmarks:Z -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil/reports:/tmp/reports:Z quay.io/hyperfoil/hyperfoil cli
 start-local
-upload /benchmarks/helloBenchmark.yml
-run hello-benchmark
+upload /benchmarks/personsBenchmark.yml
+run persons-benchmark
 stats
 report --destination=/tmp/reports
 ```

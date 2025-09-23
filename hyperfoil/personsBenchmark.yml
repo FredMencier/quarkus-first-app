@@ -1,4 +1,4 @@
-name: hello-benchmark
+name: persons-benchmark
 http:
   host: http://host.docker.internal:8080
   sharedConnections: 10
@@ -12,7 +12,7 @@ phases:
         scenario:
           - hello-endpoint:
               - httpRequest:
-                  GET: /hello
+                  GET: /persons
   - steadyState:
       constantRate:
         usersPerSec: 50
@@ -23,4 +23,4 @@ phases:
         scenario:
           - hello-endpoint:
               - httpRequest:
-                  GET: /hello
+                  GET: /persons
