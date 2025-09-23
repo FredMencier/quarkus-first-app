@@ -1,11 +1,11 @@
 # quarkus-person
 ## First Application Quarkus
-### Application Quarkus REST + DB (MySQL) + Properties + Timer
+### 🔖 Application Quarkus REST + DB (MySQL) + Properties + Timer
 
 Cette démo comporte 2 branches Git :
-- **main** :
+- 🌿 **main** :
   - contient le code source de l'application et permet simplement de démarrer et tester l'application
-- **performance_testing** :
+- 🌿 **performance_testing** :
   - contient en plus les fichiers docker permettant de builder l'application dans le différentes configurations de tests
   - contient également les fichiers hyperfoil permettant de lancer les tests de performances
 
