@@ -15,6 +15,8 @@ Comparer les temps de startup selon les différentes configurations
 - build + run en mode JVM quarkus:dev
 - build + run en mode JVM avec un jar file
 - build + run en mode natif avec GraalVM
+- build + run en mode docker JVM avec un jar file
+- build + run en mode docker Natif
 
 ---
 
