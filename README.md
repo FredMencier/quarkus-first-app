@@ -1,6 +1,6 @@
 # quarkus-person
 ## First Application Quarkus
-### 🔖 Application Quarkus REST + DB (MySQL) + Properties + Timer
+### 🔖 Application Quarkus REST + DB (MySQL ou H2) + Properties + Timer
 
 Cette démo comporte 2 branches Git :
 - 🌿 **main** :
@@ -9,28 +9,102 @@ Cette démo comporte 2 branches Git :
   - contient en plus les fichiers docker permettant de builder l'application dans le différentes configurations de tests
   - contient également les fichiers hyperfoil permettant de lancer les tests de performances
 
-
 Prérequis : java 17 minimum et docker desktop version 20 minimum
 
-- Démarrage de l'app en mode dev
-```shell
-mvn clean compile quarkus:dev
+---
+Comparer les temps de startup selon les différentes configurations
+
+- build + run en mode JVM quarkus:dev
+- build + run en mode JVM avec un fat jar
+- build + run en mode natif avec GraalVM
+
+---
+
+📌 Tableau récapitulatif des temps de démarrage
+
+| Configuration       | Start Time        | Taille du livrable |
+|---------------------|-------------------|--------------------|
+| JVM quarkus:dev     | started in 1.998s | NA                 |
+| JVM avec un fat jar | started in 1.433s | 696 octets         |
+| Natif avec GraalVM  | started in 0.121s | 131.8 Mo           |
+| docker JVM          |                   |                    |
+
+---
+Par défaut, l'application utilise H2
+
+Utilisation de la base MySql avec le profile : __-Dquarkus-profile=mysql__
+
+---
+
+## Application Quarkus en mode JVM quarkus:dev
+
+- Build de l'application
+  ```shell
+  mvn clean package
+  ```
+- Run de l'application
+  ```shell
+  mvn quarkus:dev
+  ```
+
+## Application Quarkus en mode JVM avec un fat jar
+
+- Build de l'application
+  ```shell
+  mvn clean package
+  ```
+
+- Run de l'application
+  ```shell
+  java -jar target/quarkus-app/quarkus-run.jar
+  ```
+
+## Application Quarkus en mode natif avec GraalVM (necessite GraalVM installé)
+
+Ajouter le profile __native__ dans le __pom.xml__
+
+```xml
+    <profiles>
+        <profile>
+            <id>native</id>
+            <activation>
+                <property>
+                    <name>native</name>
+                </property>
+            </activation>
+            <properties>
+                <skipITs>false</skipITs>
+                <quarkus.native.enabled>true</quarkus.native.enabled>
+                <quarkus.native.native-image-xmx>8g</quarkus.native.native-image-xmx>
+            </properties>
+        </profile>
+    </profiles>
 ```
 
-- Création de l'executable jar
-```shell
-mvn clean package
-```
+- Vérification avant le build :
 
-- Execution en mode JVM
-```shell
-java -jar target/quarkus-app/quarkus-run.jar
-```
+  ```shell
+  mvn -version
+  ```
 
-- Creation de l'executable native (necessite l'install de GraalVM)
-```shell
-mvn clean package -Pnative
-```
+  ```log
+  Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)
+  Maven home: /Users/fredericmencier/Projects/apache-maven-3.9.6
+  Java version: 21.0.8, vendor: Oracle Corporation, runtime: /Users/fredericmencier/.sdkman/candidates/java/21.0.8-graal
+  Default locale: fr_FR, platform encoding: UTF-8
+  OS name: "mac os x", version: "14.4.1", arch: "aarch64", family: "mac"
+  ```
+
+- Build de l'application
+  ```shell
+  mvn clean package -Pnative
+  ```
+  
+
+
+
+
+
 
 - Création de l'executable native Linux (necessite docker, pas besoin de GraalVM)
 ```shell

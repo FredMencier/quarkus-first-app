@@ -52,6 +52,10 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-scheduler</artifactId>
         </dependency>
         <dependency>
@@ -66,11 +70,6 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-jdbc-h2</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -143,7 +142,8 @@
             <properties>
                 <skipITs>false</skipITs>
                 <quarkus.native.enabled>true</quarkus.native.enabled>
-                <quarkus.native.container-build>true</quarkus.native.container-build>
+                <!--<quarkus.native.container-build>true</quarkus.native.container-build>-->
+                <quarkus.native.native-image-xmx>8g</quarkus.native.native-image-xmx>
             </properties>
         </profile>
     </profiles>
