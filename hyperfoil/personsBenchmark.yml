@@ -1,0 +1,26 @@
+name: persons-benchmark
+http:
+  host: http://host.docker.internal:8080
+  sharedConnections: 10
+phases:
+  - rampUp:
+      increasingRate:
+        initialUsersPerSec: 1
+        targetUsersPerSec: 10
+        maxSessions: 50
+        duration: 10s
+        scenario:
+          - hello-endpoint:
+              - httpRequest:
+                  GET: /persons
+  - steadyState:
+      constantRate:
+        usersPerSec: 50
+        maxSessions: 200
+        startAfter: rampUp
+        duration: 30s
+        maxDuration: 45s
+        scenario:
+          - hello-endpoint:
+              - httpRequest:
+                  GET: /persons
