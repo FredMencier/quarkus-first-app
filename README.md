@@ -122,7 +122,15 @@ Ajouter le profile __native__ dans le __pom.xml__
   
 - Run de l'application
   ```shell
-    docker run -i --rm -p 8080:8080 person-app-jvm:quarkus-person-app-1.0.0-SNAPSHOT
+    docker run -i --name person-app-jvm --rm -p 8080:8080 person-app-jvm:quarkus-person-app-1.0.0-SNAPSHOT
+  ```
+
+- Mesure de la RSS (Resident Set Size)
+
+  La RSS prend une valeur complète de la mémoire (plus réaliste que la Java Heap)
+
+  ```shell
+    docker exec person-app-jvm /bin/ps -e -o pid,rss,args | grep quarkus
   ```
 
 ## Application Quarkus en mode container docker natif
@@ -141,11 +149,15 @@ L'option __-Dquarkus.native.container-build=true__ permet de créer un executabl
 
 - Run de l'application
   ```shell
-    docker run -i --rm -p 8080:8080 person-app-native:quarkus-person-app-1.0.0-SNAPSHOT
+    docker run -i --name person-app-native --rm -p 8080:8080 person-app-native:quarkus-person-app-1.0.0-SNAPSHOT
   ```
 
+- Mesure de la RSS (Resident Set Size)
+  ```shell
+    docker exec person-app-native /bin/ps -e -o pid,rss,args
+  ```
 
-## Perfomance testing avec Siege
+## Perfomance testing avec Siege (Evolution : oha)
 Installation de siege :
 - https://github.com/ewwink/siege-windows
 - https://github.com/JoeDog/siege
