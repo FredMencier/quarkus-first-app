@@ -15,5 +15,4 @@ class PersonControllerTest {
                 .then()
                 .statusCode(200);
     }
-
 }

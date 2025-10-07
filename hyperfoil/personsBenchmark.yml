@@ -10,7 +10,7 @@ phases:
         maxSessions: 50
         duration: 10s
         scenario:
-          - hello-endpoint:
+          - persons-endpoint:
               - httpRequest:
                   GET: /persons
   - steadyState:
@@ -21,6 +21,6 @@ phases:
         duration: 30s
         maxDuration: 45s
         scenario:
-          - hello-endpoint:
+          - persons-endpoint:
               - httpRequest:
                   GET: /persons
