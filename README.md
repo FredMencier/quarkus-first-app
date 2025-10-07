@@ -172,15 +172,21 @@ Installation de siege :
 
 Utilisation en mode cli :
   ```shell
-    docker run -it --rm -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil:/benchmarks:Z -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil/reports:/tmp/reports:Z quay.io/hyperfoil/hyperfoil cli
-    start-local
-    upload /benchmarks/personsBenchmark.yml
-    run persons-benchmark
-    stats
-    report --destination=/tmp/reports
+      docker run -it --rm -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil:/benchmarks:Z -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil/reports:/tmp/reports:Z quay.io/hyperfoil/hyperfoil cli
+      start-local
+      upload /benchmarks/personsBenchmark.yml
+      run persons-benchmark
+      stats
+      report --destination=/tmp/reports
   ```
+
+Utilisation avec une commande complète :
+```shell
+      docker run -it --rm -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil:/benchmarks:Z -v /Users/fredericmencier/Projects/quarkus-first-app/hyperfoil/reports:/tmp/reports:Z quay.io/hyperfoil/hyperfoil run -o /tmp/reports /benchmarks/personsBenchmark.yml
+```
 
 Utilisation avec un script complet :
   ```shell
-    ./hyperfoil/startHyperfoil.sh
+      ./hyperfoil/startHyperfoil.sh
   ```
+
