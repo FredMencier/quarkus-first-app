@@ -34,7 +34,7 @@ Comparer les temps de startup selon les différentes configurations
 | Configuration               | Start Time                 | Taille du livrable |
 |-----------------------------|----------------------------|--------------------|
 | JVM quarkus:dev             | started in 2.244s          | NA                 |
-| JVM avec un jar file        | started in 1.433s          | 696 octets         |
+| JVM avec un jar file        | started in 1.433s          | 55.5 Mo            |
 | Natif avec GraalVM          | started in 0.136s 🏃‍♂️‍➡️ | 134.9 Mo           |
 | docker JVM avec un jar file | started in 1.731s 🐢       | 522 Mo             |
 | docker Natif                | started in 0.176s          | 226 Mo             |
